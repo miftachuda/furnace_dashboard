@@ -446,7 +446,7 @@ const Dashboard: React.FC = () => {
           className=" absolute w-56"
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "15%",
+            left: "14%",
             top: "84%",
           }}
         >
@@ -463,34 +463,7 @@ const Dashboard: React.FC = () => {
         >
           <FuelToggle1 />
         </div>
-        <div
-          className="absolute w-64 h-64"
-          style={{
-            transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "43%",
-            top: "72%",
-          }}
-        >
-          <img
-            src="/assets/fire_blue.gif"
-            alt="Status animation"
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-          />
-        </div>
-        <div
-          className="absolute w-64 h-64"
-          style={{
-            transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "47%",
-            top: "72%",
-          }}
-        >
-          <img
-            src="/assets/fire_red.gif"
-            alt="Status animation"
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-          />
-        </div>
+
         {/* Capacity */}
 
         <div

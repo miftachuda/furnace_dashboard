@@ -62,8 +62,8 @@ const FuelToggle1: React.FC = () => {
         className="absolute w-64 h-64"
         style={{
           transform: "scale(0.76) translate(-50%, -50%) ",
-          left: "13%",
-          bottom: "0%",
+          left: "20%",
+          bottom: "30%",
         }}
       >
         <img
@@ -76,8 +76,8 @@ const FuelToggle1: React.FC = () => {
         className="absolute w-64 h-64"
         style={{
           transform: "scale(0.76) translate(-50%, -50%) ",
-          left: "57%",
-          bottom: "0%",
+          left: "77%",
+          bottom: "30%",
         }}
       >
         <img
@@ -90,15 +90,15 @@ const FuelToggle1: React.FC = () => {
         onClick={() => toggleFuel("FuelGas021F101")}
         className={`${buttonBaseStyle} ${
           buttonState.FuelGas021F101
-            ? "bg-green-600 text-white border-green-600 shadow-[0_0_0_4px_rgba(34,197,94,0.3)]"
+            ? "bg-blue-600 text-white border-blue-600 shadow-[0_0_0_4px_rgba(59,130,246,0.3)]"
             : `bg-gray-100 text-gray-400 border-gray-200 ${stopMarkStyle}`
         }`}
         style={{
           transform: "scale(1.06)",
           height: "50px",
           width: "120px",
-          left: "13%",
-          bottom: "70%",
+          left: "0%",
+          bottom: "0%",
         }}
       >
         Fuel Gas
@@ -115,8 +115,8 @@ const FuelToggle1: React.FC = () => {
           transform: "scale(1.06) ",
           height: "50px",
           width: "120px",
-          left: "85%",
-          bottom: "70%",
+          left: "65%",
+          bottom: "0%",
         }}
       >
         Fuel Oil
