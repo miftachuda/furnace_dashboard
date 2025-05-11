@@ -4,7 +4,7 @@ import Dashboard from "./components/MainPage";
 import { ParameterProvider } from "./context/ParameterContext";
 
 // Sample background image URL (replace with your own 1920x1080 image)
-const BACKGROUND_IMAGE = "src/assets/bg2.jpg";
+const BACKGROUND_IMAGE = "/assets/bg2.jpg";
 
 function App() {
   return (

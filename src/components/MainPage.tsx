@@ -10,7 +10,7 @@ import {
 } from "../API/fetch";
 import { ParameterData } from "../types";
 import ParamCardMini from "./ParamCardMini";
-import FuelToggle from "./FuelToggle";
+import FuelToggle1 from "./FuelToggle1";
 import FireAnimation from "./Fire";
 
 // 021
@@ -150,41 +150,44 @@ const Dashboard: React.FC = () => {
 
   const capacity_021 = list_capacity_021[list_capacity_021.length - 1];
 
-  const tonf1 =
-    (getValueByTag("021FI_020.pv", datas) *
-      sg_fuel_gas *
-      mass_air_per_kg *
-      24) /
-    1000;
-  const tonf2 =
-    (getValueByTag("021FI_091A.pv", datas) *
-      sg_fuel_gas *
-      mass_air_per_kg *
-      24) /
-    1000;
-  const tsrf_021 =
-    (((tonf1 + tonf2) * tsrf_fuel_gas_fact) / ton_capacity_021) * 100;
+  // trsf 021 //
+  const values1 = getValuesByTag("021FI_020.pv", datas);
+  const values2 = getValuesByTag("021FI_091A.pv", datas);
 
-  //025
-  const ton_capacity_025 =
-    getValueByTag("025FIC_004.pv", datas) *
-    24 *
-    getValueByTag("021FY_058X.C1", datas);
+  const tonf1_list = values1.map(
+    (v) => (v * sg_fuel_gas * mass_air_per_kg * 24) / 1000
+  );
+  const tonf2_list = values2.map(
+    (v) => (v * sg_fuel_gas * mass_air_per_kg * 24) / 1000
+  );
 
-  const ton_fg_025 =
-    (getValueByTag("025FI_014.PV", datas) *
-      sg_fuel_gas *
-      mass_air_per_kg *
-      24) /
-    1000;
-  const ton_fo_025 =
-    getValueByTag("002FI_035.PV", datas) *
-    getValueByTag("021FY_058X.C1", datas) *
-    24;
-  const tsrf_025 =
-    ((ton_fg_025 * 1.313 + ton_fo_025 * tsrf_fuel_oil_fact) /
-      ton_capacity_025) *
-    100;
+  // Combine and compute tsrf_021 list
+  const tsrf_021_list = tonf1_list.map((val, i) => {
+    const total_fuel = val + tonf2_list[i];
+    return ((total_fuel * tsrf_fuel_gas_fact) / ton_capacity_021) * 100;
+  });
+  const tsrf_021 = tsrf_021_list[tsrf_021_list.length - 1];
+
+  // tsrf 025 //
+  const fic_004 = getValuesByTag("025FIC_004.pv", datas);
+  const fy_058x = getValuesByTag("021FY_058X.C1", datas);
+  const fi_014 = getValuesByTag("025FI_014.PV", datas);
+  const fi_035 = getValuesByTag("002FI_035.PV", datas);
+
+  const tsrf_025_list = fic_004.map((_, i) => {
+    const ton_capacity_025 = fic_004[i] * 24 * fy_058x[i];
+    const ton_fg_025 = (fi_014[i] * sg_fuel_gas * mass_air_per_kg * 24) / 1000;
+    const ton_fo_025 = fi_035[i] * fy_058x[i] * 24;
+
+    return (
+      ((ton_fg_025 * 1.313 + ton_fo_025 * tsrf_fuel_oil_fact) /
+        ton_capacity_025) *
+      100
+    );
+  });
+
+  // Safe access to the last element in the list
+  const tsrf_025 = tsrf_025_list[tsrf_025_list.length - 1];
 
   const capacity: ParameterData = {
     id: "Cap",
@@ -205,7 +208,7 @@ const Dashboard: React.FC = () => {
     unit: "%",
     lowThreshold: 0.0,
     highThreshold: 1.03,
-    history: [1.0, 1.5, 0.9, 0.98, 1.02],
+    history: tsrf_021_list,
     icon: "calculator", // could be a filename or icon name
     description: "TSRF unit 021",
   };
@@ -325,8 +328,8 @@ const Dashboard: React.FC = () => {
     name: "CIT Temp 025F-101",
     value: cit_025_F101_values[cit_025_F101_values.length - 1],
     unit: "℃",
-    lowThreshold: 280,
-    highThreshold: 350,
+    lowThreshold: 230,
+    highThreshold: 300,
     history: cit_025_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "CIT 025F101",
@@ -338,7 +341,7 @@ const Dashboard: React.FC = () => {
     value: cot_025_F101_values[cot_025_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 280,
-    highThreshold: 350,
+    highThreshold: 330,
     history: cot_025_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "CIT 025F101",
@@ -350,7 +353,7 @@ const Dashboard: React.FC = () => {
     value: cit_021_F101_values[cit_021_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 280,
-    highThreshold: 350,
+    highThreshold: 300,
     history: cit_021_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "CIT 021F101",
@@ -361,8 +364,8 @@ const Dashboard: React.FC = () => {
     name: "COT Temp 021F-101",
     value: cot_021_F101_values[cot_021_F101_values.length - 1],
     unit: "℃",
-    lowThreshold: 280,
-    highThreshold: 350,
+    lowThreshold: 300,
+    highThreshold: 390,
     history: cot_021_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "COT 021F101",
@@ -373,7 +376,7 @@ const Dashboard: React.FC = () => {
     name: "CIT Temp 021F-102",
     value: cit_021_F102_values[cit_021_F102_values.length - 1],
     unit: "℃",
-    lowThreshold: 280,
+    lowThreshold: 300,
     highThreshold: 350,
     history: cit_021_F102_values,
     icon: "calculator", // could be a filename or icon name
@@ -385,8 +388,8 @@ const Dashboard: React.FC = () => {
     name: "COT Temp 021F-102",
     value: cot_021_F102_values[cot_021_F102_values.length - 1],
     unit: "℃",
-    lowThreshold: 280,
-    highThreshold: 350,
+    lowThreshold: 300,
+    highThreshold: 390,
     history: cot_021_F102_values,
     icon: "calculator", // could be a filename or icon name
     description: "COT 021F102",
@@ -447,22 +450,9 @@ const Dashboard: React.FC = () => {
             top: "84%",
           }}
         >
-          <FuelToggle />
+          <FuelToggle1 />
         </div>
-        <div
-          className="absolute w-64 h-64"
-          style={{
-            transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "13%",
-            top: "72%",
-          }}
-        >
-          <img
-            src="/assets/fire.gif"
-            alt="Status animation"
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-          />
-        </div>
+
         <div
           className=" absolute w-56"
           style={{
@@ -471,7 +461,7 @@ const Dashboard: React.FC = () => {
             top: "84%",
           }}
         >
-          <FuelToggle />
+          <FuelToggle1 />
         </div>
         <div
           className="absolute w-64 h-64"
@@ -482,7 +472,21 @@ const Dashboard: React.FC = () => {
           }}
         >
           <img
-            src="/assets/fire.gif"
+            src="/assets/fire_blue.gif"
+            alt="Status animation"
+            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+          />
+        </div>
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.76) translate(-50%, -50%) ",
+            left: "47%",
+            top: "72%",
+          }}
+        >
+          <img
+            src="/assets/fire_red.gif"
             alt="Status animation"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none"
           />

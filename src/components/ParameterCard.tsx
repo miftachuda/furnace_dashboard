@@ -25,8 +25,12 @@ const ParameterCard: React.FC<ParameterCardProps> = ({ parameter }) => {
       <div
         className={`absolute top-0 right-0 left-0 h-1 ${getStatusColor(
           status
-        )}`}
-      ></div>
+        )} ${
+          ["bg-red-500", "bg-amber-500"].includes(getStatusColor(status))
+            ? "animate-blink"
+            : ""
+        }`}
+      />
 
       <div className="flex justify-between items-start mb-2">
         <div className="flex items-center gap-2">

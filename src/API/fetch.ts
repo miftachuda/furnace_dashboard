@@ -12,15 +12,16 @@ export interface TagData {
 export function emptyTagData(): TagData {
   return {
     TagNumber: 0,
-    TagName: "",
-    Units: "",
-    Status: -1,
-    TimeStamp: [],
-    Value: [],
-    Confidence: [],
-    Sequence: [],
+    TagName: "0",
+    Units: "0",
+    Status: 0,
+    TimeStamp: [""],
+    Value: [0],
+    Confidence: [0],
+    Sequence: [0],
   };
 }
+
 //fetchTagNames(listPoints, "Now", 10, 50),
 export async function fetchTagNames(
   tagname: string[],
@@ -94,7 +95,7 @@ export function getValueByTag(tag: string, datas: TagData[]): number {
     //onsole.log(`Last value for ${tag}:`, lastValue);
     return lastValue;
   } else {
-    console.log("Tag not found or no values available.");
+    0;
     return 0;
   }
 }
@@ -107,8 +108,8 @@ export function getValuesByTag(tag: string, datas: TagData[]): number[] {
   if (tagsearch && tagsearch.Value.length > 0) {
     return tagsearch.Value;
   } else {
-    console.log("Tag not found or no values available.");
-    return [];
+    0;
+    return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   }
 }
 
