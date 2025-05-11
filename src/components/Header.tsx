@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-[2vh]">
           <div>
             <img
-              src="src/assets/loc.png"
+              src="/assets/loc.png"
               alt="Location"
               className="h-[4vh] w-full"
             />

@@ -405,7 +405,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <img
-            src="src/assets/pipe.png"
+            src="/assets/pipe.png"
             alt="Status animation"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none opacity-55"
           />
@@ -419,7 +419,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <img
-            src="src/assets/pipe.png"
+            src="/assets/pipe.png"
             alt="Status animation"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none opacity-55"
           />
@@ -433,7 +433,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <img
-            src="src/assets/pipe.png"
+            src="/assets/pipe.png"
             alt="Status animation"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none    opacity-55"
           />
@@ -458,7 +458,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <img
-            src="src/assets/fire.gif"
+            src="/assets/fire.gif"
             alt="Status animation"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none"
           />
@@ -482,7 +482,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <img
-            src="src/assets/fire.gif"
+            src="/assets/fire.gif"
             alt="Status animation"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none"
           />
