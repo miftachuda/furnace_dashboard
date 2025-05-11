@@ -36,6 +36,7 @@ export async function fetchTagNames(
     // "cf-access-client-secret":
     //   "//d078417d60eeb52a6d3933ef66fbdcf2696a9d0d877451bd0c2d56d9892d01a3",
   };
+  console.log("refreshing data...");
 
   const body = JSON.stringify([
     {
@@ -90,7 +91,7 @@ export function getValueByTag(tag: string, datas: TagData[]): number {
 
   if (tagsearch && tagsearch.Value.length > 0) {
     const lastValue = tagsearch.Value[tagsearch.Value.length - 1];
-    console.log(`Last value for ${tag}:`, lastValue);
+    //onsole.log(`Last value for ${tag}:`, lastValue);
     return lastValue;
   } else {
     console.log("Tag not found or no values available.");

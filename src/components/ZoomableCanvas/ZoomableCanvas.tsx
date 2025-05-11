@@ -1,27 +1,45 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { ZoomControls } from './ZoomControls';
-import { useZoom } from '../../hooks/useZoom';
-import { usePan } from '../../hooks/usePan';
+import React, { useState, useRef, useEffect } from "react";
+import { ZoomControls } from "./ZoomControls";
+import { useZoom } from "../../hooks/useZoom";
+import { usePan } from "../../hooks/usePan";
 
 interface ZoomableCanvasProps {
   backgroundImage: string;
   children?: React.ReactNode;
 }
 
-export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({ 
+export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
   backgroundImage,
-  children 
+  children,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const panStart = useRef({ x: 0, y: 0 });
 
-  const { 
-    scale, 
-    setScale, 
-    handleZoomIn, 
-    handleZoomOut, 
+  const VIRTUAL_WIDTH = 2048;
+  const VIRTUAL_HEIGHT = 1018;
+  useEffect(() => {
+    const updateScale = () => {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight; // Adjust height to fit the header
+      const scaleX = vw / VIRTUAL_WIDTH;
+      const scaleY = vh / VIRTUAL_HEIGHT;
+      setScale(Math.min(scaleX, scaleY));
+    };
+
+    window.addEventListener("resize", updateScale);
+    updateScale();
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
+
+  const {
+    scale,
+    setScale,
+    handleZoomIn,
+    handleZoomOut,
     handleZoomReset,
-    handleWheelZoom
+    handleWheelZoom,
   } = useZoom();
 
   const {
@@ -30,10 +48,15 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
-    handleMouseLeave
+    handleMouseLeave,
+    handlePanReset,
   } = usePan(scale);
 
   // Update transform when zoom or position changes
+  const handleReset = () => {
+    handleZoomReset();
+    handlePanReset();
+  };
   useEffect(() => {
     if (contentRef.current) {
       contentRef.current.style.transform = `translate(${position.x}px, ${position.y}px) scale(${scale})`;
@@ -41,35 +64,50 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
   }, [scale, position]);
 
   return (
-    <div 
-      className="relative w-full h-screen overflow-hidden bg-neutral-900"
-      ref={containerRef}
+    <div
+      className="fixed inset-0 overflow-hidden bg-black"
       onWheel={handleWheelZoom}
     >
-      {/* Canvas content */}
-      <div 
-        ref={contentRef}
-        className={`absolute origin-center transition-transform duration-75 w-full h-full
-          ${isPanning ? 'cursor-grabbing' : 'cursor-grab'}`}
+      <div
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
+        className={`${isPanning ? "cursor-grabbing" : "cursor-grab"}`}
         style={{
-          transformOrigin: 'center center',
+          width: VIRTUAL_WIDTH,
+          height: VIRTUAL_HEIGHT,
+          transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`,
+          transformOrigin: "top left",
+          position: "absolute",
         }}
       >
-        {/* Background image */}
-        <div className="absolute inset-0 w-full h-full">
-          <img 
-            src={backgroundImage} 
-            alt="Background" 
-            className="w-full h-full object-cover" 
-          />
-        </div>
+        {/* Fixed-resolution background */}
+        <img
+          src={backgroundImage}
+          alt="Background"
+          draggable={false}
+          style={{
+            width: VIRTUAL_WIDTH,
+            height: VIRTUAL_HEIGHT,
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        />
 
-        {/* Child elements that maintain position */}
-        {children}
+        {/* Children placed by absolute coordinates (aligned perfectly) */}
+        <div
+          style={{
+            width: VIRTUAL_WIDTH,
+            height: VIRTUAL_HEIGHT,
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        >
+          {children}
+        </div>
       </div>
 
       {/* Zoom controls */}
@@ -78,7 +116,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
           scale={scale}
           onZoomIn={handleZoomIn}
           onZoomOut={handleZoomOut}
-          onZoomReset={handleZoomReset}
+          onZoomReset={handleReset}
         />
       </div>
     </div>

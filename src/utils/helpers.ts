@@ -36,8 +36,15 @@ export function getStatusGradient(status: ParameterStatus): string {
   }
 }
 
-export function formatNumber(value: number): string {
+export function formatNumber3(value: number): string {
   return value.toFixed(3);
+}
+export function formatNumber2(value: number): string {
+  return value.toFixed(2);
+}
+
+export function formatNumber1(value: number): string {
+  return value.toFixed(1);
 }
 
 export function calculatePercentage(

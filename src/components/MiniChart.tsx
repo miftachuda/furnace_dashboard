@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { ParameterData, ParameterStatus } from "../types";
-import { getStatusColor, getStatusGradient } from "../utils/helpers";
 
 interface MiniChartProps {
   parameter: ParameterData;
@@ -59,7 +58,6 @@ const MiniChart: React.FC<MiniChartProps> = ({ parameter, status }) => {
 
   const smoothPath = createSmoothPath(chartData.points);
   const areaPath = createAreaPath(chartData.points);
-  const gradientClass = getStatusGradient(status);
   const strokeColor =
     status === "normal"
       ? "#10b981"
@@ -69,19 +67,17 @@ const MiniChart: React.FC<MiniChartProps> = ({ parameter, status }) => {
 
   return (
     <div className="w-full h-16 relative mt-2">
-      <div
-        className={`absolute inset-0 rounded bg-gradient-to-b ${gradientClass}`}
-      ></div>
+      <div className={`absolute inset-0 rounded `}></div>
 
       {/* High threshold line */}
       <div
-        className="absolute left-0 right-0 border-t border-red-500/50 z-10"
+        className="absolute left-0 right-0 border-t border-red-600 z-10"
         style={{ top: `${chartData.highLine}%` }}
       />
 
       {/* Low threshold line */}
       <div
-        className="absolute left-0 right-0 border-t border-amber-500/50 z-10"
+        className="absolute left-0 right-0 border-t border-amber-500 z-10"
         style={{ top: `${chartData.lowLine}%` }}
       />
 
