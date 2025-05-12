@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../utils/supabase";
 
 type ButtonOption = {
-  FuelGas021F101: boolean;
-  FuelOil021F101: boolean;
+  FuelGas021F102: boolean;
+  FuelOil021F102: boolean;
 };
 
 const FuelToggle2: React.FC = () => {
   const [buttonState, setButtonState] = useState<ButtonOption>({
-    FuelGas021F101: false,
-    FuelOil021F101: false,
+    FuelGas021F102: false,
+    FuelOil021F102: false,
   });
 
   useEffect(() => {
     const fetchState = async () => {
       const { data, error } = await supabase
         .from("burner")
-        .select("FuelGas021F101, FuelOil021F101")
+        .select("FuelGas021F102, FuelOil021F102")
         .eq("id", 1)
         .single();
 
@@ -24,8 +24,8 @@ const FuelToggle2: React.FC = () => {
         console.error("Error fetching state:", error);
       } else if (data) {
         setButtonState({
-          FuelGas021F101: data.FuelGas021F101,
-          FuelOil021F101: data.FuelOil021F101,
+          FuelGas021F102: data.FuelGas021F102,
+          FuelOil021F102: data.FuelOil021F102,
         });
       }
     };
@@ -58,38 +58,42 @@ const FuelToggle2: React.FC = () => {
 
   return (
     <div className="absolute inset-0 z-10 p-6">
-      <div
-        className="absolute w-64 h-64"
-        style={{
-          transform: "scale(0.76) translate(-50%, -50%) ",
-          left: "20%",
-          bottom: "30%",
-        }}
-      >
-        <img
-          src="/assets/fire_blue.gif"
-          alt="Status animation"
-          className="absolute object-contain pointer-events-none"
-        />
-      </div>
-      <div
-        className="absolute w-64 h-64"
-        style={{
-          transform: "scale(0.76) translate(-50%, -50%) ",
-          left: "77%",
-          bottom: "30%",
-        }}
-      >
-        <img
-          src="/assets/fire_red.gif"
-          alt="Status animation"
-          className="absolute  object-contain pointer-events-none"
-        />
-      </div>
+      {buttonState.FuelGas021F102 && (
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.76) translate(-50%, -50%)",
+            left: "20%",
+            bottom: "30%",
+          }}
+        >
+          <img
+            src="/assets/fire_blue.gif"
+            alt="Status animation"
+            className="absolute object-contain pointer-events-none"
+          />
+        </div>
+      )}
+      {buttonState.FuelOil021F102 && (
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.76) translate(-50%, -50%) ",
+            left: "77%",
+            bottom: "30%",
+          }}
+        >
+          <img
+            src="/assets/fire_red.gif"
+            alt="Status animation"
+            className="absolute  object-contain pointer-events-none"
+          />
+        </div>
+      )}
       <button
-        onClick={() => toggleFuel("FuelGas021F101")}
+        onClick={() => toggleFuel("FuelGas021F102")}
         className={`${buttonBaseStyle} ${
-          buttonState.FuelGas021F101
+          buttonState.FuelGas021F102
             ? "bg-blue-600 text-white border-blue-600 shadow-[0_0_0_4px_rgba(59,130,246,0.3)]"
             : `bg-gray-100 text-gray-400 border-gray-200 ${stopMarkStyle}`
         }`}
@@ -105,9 +109,9 @@ const FuelToggle2: React.FC = () => {
       </button>
 
       <button
-        onClick={() => toggleFuel("FuelOil021F101")}
+        onClick={() => toggleFuel("FuelOil021F102")}
         className={`${buttonBaseStyle} ${
-          buttonState.FuelOil021F101
+          buttonState.FuelOil021F102
             ? "bg-blue-600 text-white border-blue-600 shadow-[0_0_0_4px_rgba(59,130,246,0.3)]"
             : `bg-gray-100 text-gray-400 border-gray-200 ${stopMarkStyle}`
         } `}

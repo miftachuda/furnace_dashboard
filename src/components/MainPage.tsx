@@ -13,6 +13,8 @@ import ParamCardMini from "./ParamCardMini";
 import FuelToggle1 from "./FuelToggle1";
 import FireAnimation from "./Fire";
 import FuelToggle2 from "./FuelToggle2";
+import TemperatureDisplay from "./Temperature";
+import BoxPanel from "./BoxPanel";
 
 // 021
 
@@ -220,7 +222,7 @@ const Dashboard: React.FC = () => {
     unit: "%",
     lowThreshold: 0.0,
     highThreshold: 0.59,
-    history: [0.5, 0.4, 0.45, 0.65, 0.54],
+    history: tsrf_025_list,
     icon: "calculator", // could be a filename or icon name
     description: "TSRF unit 025",
   };
@@ -395,11 +397,55 @@ const Dashboard: React.FC = () => {
     icon: "calculator", // could be a filename or icon name
     description: "COT 021F102",
   };
+  const delta021F101 = cot_021_F101.value - cit_021_F101.value;
+  const delta021F102 = cot_021_F102.value - cit_021_F102.value;
+  const delta025F101 = cot_025_F101.value - cit_025_F101.value;
 
   return (
     <div className="relative w-full h-screen">
       {/* Parameter cards layered on top */}
       <div className="absolute inset-0 z-10 p-6">
+        <div
+          className="absolute w-16 h-64"
+          style={{
+            transform: "scale(0.60) translate(-50%, -50%) ",
+            right: "8%",
+            top: "25%",
+          }}
+        >
+          <BoxPanel />
+        </div>
+
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.96) translate(-50%, -50%) ",
+            left: "13%",
+            top: "65%",
+          }}
+        >
+          <TemperatureDisplay temperature={delta021F101} />
+        </div>
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.96) translate(-50%, -50%) ",
+            left: "45%",
+            top: "65%",
+          }}
+        >
+          <TemperatureDisplay temperature={delta021F102} />
+        </div>
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.96) translate(-50%, -50%) ",
+            left: "77%",
+            top: "65%",
+          }}
+        >
+          <TemperatureDisplay temperature={delta025F101} />
+        </div>
         <div
           className="absolute w-64 h-64"
           style={{

@@ -58,34 +58,38 @@ const FuelToggle1: React.FC = () => {
 
   return (
     <div className="absolute inset-0 z-10 p-6">
-      <div
-        className="absolute w-64 h-64"
-        style={{
-          transform: "scale(0.76) translate(-50%, -50%) ",
-          left: "20%",
-          bottom: "30%",
-        }}
-      >
-        <img
-          src="/assets/fire_blue.gif"
-          alt="Status animation"
-          className="absolute object-contain pointer-events-none"
-        />
-      </div>
-      <div
-        className="absolute w-64 h-64"
-        style={{
-          transform: "scale(0.76) translate(-50%, -50%) ",
-          left: "77%",
-          bottom: "30%",
-        }}
-      >
-        <img
-          src="/assets/fire_red.gif"
-          alt="Status animation"
-          className="absolute  object-contain pointer-events-none"
-        />
-      </div>
+      {buttonState.FuelGas021F101 && (
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.76) translate(-50%, -50%) ",
+            left: "20%",
+            bottom: "30%",
+          }}
+        >
+          <img
+            src="/assets/fire_blue.gif"
+            alt="Status animation"
+            className="absolute object-contain pointer-events-none"
+          />
+        </div>
+      )}
+      {buttonState.FuelOil021F101 && (
+        <div
+          className="absolute w-64 h-64"
+          style={{
+            transform: "scale(0.76) translate(-50%, -50%) ",
+            left: "77%",
+            bottom: "30%",
+          }}
+        >
+          <img
+            src="/assets/fire_red.gif"
+            alt="Status animation"
+            className="absolute  object-contain pointer-events-none"
+          />
+        </div>
+      )}
       <button
         onClick={() => toggleFuel("FuelGas021F101")}
         className={`${buttonBaseStyle} ${
