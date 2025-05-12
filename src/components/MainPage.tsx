@@ -15,7 +15,6 @@ import FuelToggle2 from "./FuelToggle2";
 import TemperatureDisplay from "./Temperature";
 import BoxPanel from "./BurnerPanel";
 import FuelToggle1B from "./FuelToggle1B";
-import TubeSkin from "./TubeSkin";
 import TubeSkinList from "./TubeSkinList";
 import TubeSkinList025 from "./TubeSkinList025";
 
@@ -863,11 +862,11 @@ const Dashboard: React.FC = () => {
           />
         </div>
         <div
-          className="absolute w-full "
+          className="absolute h-40 w-auto"
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "76%",
-            top: "76%",
+            left: "72%",
+            top: "72%",
           }}
         >
           <TubeSkinList025

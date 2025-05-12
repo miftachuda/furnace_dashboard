@@ -16,7 +16,7 @@ const TubeSkin: React.FC<TubeSkinProps> = ({ parameter }) => {
 
   return (
     <div
-      className={`relative bg-slate-800 rounded-lg p-2 border bg-opacity-50 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
+      className={`relative bg-slate-800 rounded-lg p-2 border bg-opacity-50 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden w-36`}
     >
       <div
         className={`absolute top-0 right-0 left-0 h-1 ${getStatusColor(
