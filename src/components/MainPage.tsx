@@ -12,6 +12,7 @@ import { ParameterData } from "../types";
 import ParamCardMini from "./ParamCardMini";
 import FuelToggle1 from "./FuelToggle1";
 import FireAnimation from "./Fire";
+import FuelToggle2 from "./FuelToggle2";
 
 // 021
 
@@ -461,7 +462,7 @@ const Dashboard: React.FC = () => {
             top: "84%",
           }}
         >
-          <FuelToggle1 />
+          <FuelToggle2 />
         </div>
 
         {/* Capacity */}
