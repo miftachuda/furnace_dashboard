@@ -52,7 +52,7 @@ const FuelToggle1: React.FC = () => {
   };
 
   const buttonBaseStyle =
-    "absolute px-6 py-2 rounded-md font-semibold text-sm transition-all duration-300 border-2 overflow-hidden";
+    "absolute px-2 py-2 rounded-md font-bold text-2xl transition-all duration-300 border-2 overflow-hidden";
 
   const stopMarkStyle = `after:content-[''] after:absolute after:w-[150%] after:h-[2px] after:bg-red-500 after:rotate-[-20deg] after:top-1/2 after:left-[-25%]`;
 
@@ -64,7 +64,7 @@ const FuelToggle1: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "20%",
-            bottom: "30%",
+            bottom: "90%",
           }}
         >
           <img
@@ -80,7 +80,7 @@ const FuelToggle1: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "77%",
-            bottom: "30%",
+            bottom: "90%",
           }}
         >
           <img
@@ -102,7 +102,7 @@ const FuelToggle1: React.FC = () => {
           height: "50px",
           width: "120px",
           left: "0%",
-          bottom: "0%",
+          bottom: "60%",
         }}
       >
         Fuel Gas
@@ -120,11 +120,20 @@ const FuelToggle1: React.FC = () => {
           height: "50px",
           width: "120px",
           left: "65%",
-          bottom: "0%",
+          bottom: "60%",
         }}
       >
         Fuel Oil
       </button>
+      <div
+        className="absolute text-white font-bold text-2xl"
+        style={{
+          left: "30%",
+          top: "70%",
+        }}
+      >
+        East Burner
+      </div>
     </div>
   );
 };

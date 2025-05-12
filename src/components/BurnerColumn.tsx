@@ -1,22 +1,22 @@
 import React from "react";
-import SwitchBox, { BoxState } from "./SwitchBox";
+import SwitchBurner, { BurnerState } from "./SwitchBurner";
 
-interface BoxItem {
+interface BurnerItem {
   id: number;
   number: number;
-  state: BoxState;
+  state: BurnerState;
 }
 
-interface BoxColumnProps {
-  items: BoxItem[];
+interface BurnerColumnProps {
+  items: BurnerItem[];
   reversed?: boolean;
-  onBoxClick: (id: number) => void;
+  onBurnerClick: (id: number, state: string) => void;
 }
 
-const BoxColumn: React.FC<BoxColumnProps> = ({
+const BurnerColumn: React.FC<BurnerColumnProps> = ({
   items,
   reversed = false,
-  onBoxClick,
+  onBurnerClick,
 }) => {
   return (
     <div className="flex flex-col gap-4 items-start relative">
@@ -30,11 +30,14 @@ const BoxColumn: React.FC<BoxColumnProps> = ({
           <span className="text-2xl font-bold text-cyan-300">
             {item.number}
           </span>
-          <SwitchBox state={item.state} onClick={() => onBoxClick(item.id)} />
+          <SwitchBurner
+            state={item.state}
+            onClick={(state) => onBurnerClick(item.id, state)}
+          />
         </div>
       ))}
     </div>
   );
 };
 
-export default BoxColumn;
+export default BurnerColumn;

@@ -99,6 +99,23 @@ export function getValueByTag(tag: string, datas: TagData[]): number {
     return 0;
   }
 }
+export function getMultiValueByTags(
+  tags: string[],
+  datas: TagData[]
+): number[] {
+  return tags.map((tag) => {
+    const tagsearch = datas.find(
+      (t) => t.TagName.toLocaleLowerCase() === tag.toLocaleLowerCase()
+    );
+
+    if (tagsearch && tagsearch.Value.length > 0) {
+      const lastValue = tagsearch.Value[tagsearch.Value.length - 1];
+      return lastValue;
+    } else {
+      return 0;
+    }
+  });
+}
 
 export function getValuesByTag(tag: string, datas: TagData[]): number[] {
   const tagsearch = datas.find(

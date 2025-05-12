@@ -4,17 +4,20 @@ import ParameterCardNoChart from "./ParameterCardNoChart";
 
 import {
   fetchTagNames,
-  getValueByTag,
   getValuesByTag,
+  getMultiValueByTags,
   TagData,
 } from "../API/fetch";
 import { ParameterData } from "../types";
 import ParamCardMini from "./ParamCardMini";
 import FuelToggle1 from "./FuelToggle1";
-import FireAnimation from "./Fire";
 import FuelToggle2 from "./FuelToggle2";
 import TemperatureDisplay from "./Temperature";
-import BoxPanel from "./BoxPanel";
+import BoxPanel from "./BurnerPanel";
+import FuelToggle1B from "./FuelToggle1B";
+import TubeSkin from "./TubeSkin";
+import TubeSkinList from "./TubeSkinList";
+import TubeSkinList025 from "./TubeSkinList025";
 
 // 021
 
@@ -62,6 +65,26 @@ const Dashboard: React.FC = () => {
     "002FI_035.PV", // flow oil 025
     "025AI_001.pv", //02 selatan
     "025AI_002.pv", //02 utara
+
+    "021TI_263.PV", // Pass 1
+    "021TI_264.PV", // Pass 2
+    "021TI_265.PV", // Pass 3
+    "021TI_266.PV", // Pass 4
+
+    "021TI_278.PV", //Pass 1
+    "021TI_279.PV", //Pass 2
+    "021TI_280.PV", //Pass 3
+    "021TI_281.PV", //Pass 4
+    "021TI_282.PV", //Pass 5
+
+    "025TI_005.PV", //Pass 1
+    "025TI_006.PV", //Pass 2
+    "025TI_007.PV", //Pass 3
+    "025TI_008.PV", //Pass 4
+    "025TI_009.PV", //Pass 5
+    "025TI_010.PV", //Pass 6
+    "025TI_011.PV", //Pass 7
+    "025TI_012.PV", //Pass 8
   ];
   const fetchData = useCallback(async () => {
     setIsLoading(true);
@@ -401,16 +424,108 @@ const Dashboard: React.FC = () => {
   const delta021F102 = cot_021_F102.value - cit_021_F102.value;
   const delta025F101 = cot_025_F101.value - cit_025_F101.value;
 
+  const tube_skins_f1 = getMultiValueByTags(
+    ["021TI_263.pv", "021TI_264.pv", "021TI_265.pv", "021TI_266.pv"],
+    datas
+  );
+  const tube_skins_f1_param = tube_skins_f1.map(
+    (value: number | null, index: number) => {
+      let pass = index + 1;
+      if (value) {
+        const param: ParameterData = {
+          id: "Skin Pass " + pass,
+          name: "Pass " + pass,
+          value: value,
+          unit: "%",
+          lowThreshold: 300,
+          highThreshold: 450,
+          history: [],
+          icon: "calculator", // could be a filename or icon name
+          description: "Tube Skin Pass " + pass,
+        };
+        return param;
+      } else {
+        return 0;
+      }
+    }
+  );
+
+  const tube_skins_f2 = getMultiValueByTags(
+    [
+      "021TI_278.PV", //Pass 1
+      "021TI_279.PV", //Pass 2
+      "021TI_280.PV", //Pass 3
+      "021TI_281.PV", //Pass 4
+      "021TI_282.PV", //Pass 5,
+    ],
+    datas
+  );
+  const tube_skins_f2_param = tube_skins_f2.map(
+    (value: number | null, index: number) => {
+      let pass = index + 1;
+      if (value) {
+        const param: ParameterData = {
+          id: "Skin Pass " + pass,
+          name: "Pass " + pass,
+          value: value,
+          unit: "%",
+          lowThreshold: 300,
+          highThreshold: 450,
+          history: [],
+          icon: "calculator", // could be a filename or icon name
+          description: "Tube Skin Pass " + pass,
+        };
+        return param;
+      } else {
+        return 0;
+      }
+    }
+  );
+  const tube_skins_25f1 = getMultiValueByTags(
+    [
+      "025TI_005.PV", //Pass 1
+      "025TI_006.PV", //Pass 2
+      "025TI_007.PV", //Pass 3
+      "025TI_008.PV", //Pass 4
+      "025TI_009.PV", //Pass 5
+      "025TI_010.PV", //Pass 6
+      "025TI_011.PV", //Pass 7
+      "025TI_012.PV", //Pass 8
+    ],
+    datas
+  );
+  const tube_skins_25f1_param = tube_skins_25f1.map(
+    (value: number | null, index: number) => {
+      let pass = index + 1;
+      if (value) {
+        const param: ParameterData = {
+          id: "Skin Pass " + pass,
+          name: "Pass " + pass,
+          value: value,
+          unit: "%",
+          lowThreshold: 300,
+          highThreshold: 450,
+          history: [],
+          icon: "calculator", // could be a filename or icon name
+          description: "Tube Skin Pass " + pass,
+        };
+        return param;
+      } else {
+        return 0;
+      }
+    }
+  );
+
   return (
     <div className="relative w-full h-screen">
       {/* Parameter cards layered on top */}
       <div className="absolute inset-0 z-10 p-6">
         <div
-          className="absolute w-16 h-64"
+          className="absolute w-90 h-90"
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            right: "8%",
-            top: "25%",
+            left: "90%",
+            top: "20%",
           }}
         >
           <BoxPanel />
@@ -492,20 +607,30 @@ const Dashboard: React.FC = () => {
         <div
           className=" absolute w-56"
           style={{
-            transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "14%",
-            top: "84%",
+            transform: "scale(0.46) translate(-50%, -50%) ",
+            left: "9%",
+            top: "80%",
           }}
         >
           <FuelToggle1 />
+        </div>
+        <div
+          className=" absolute w-56"
+          style={{
+            transform: "scale(0.46) translate(-50%, -50%) ",
+            left: "16%",
+            top: "80%",
+          }}
+        >
+          <FuelToggle1B />
         </div>
 
         <div
           className=" absolute w-56"
           style={{
-            transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "45%",
-            top: "84%",
+            transform: "scale(0.46) translate(-50%, -50%) ",
+            left: "43%",
+            top: "80%",
           }}
         >
           <FuelToggle2 />
@@ -706,6 +831,51 @@ const Dashboard: React.FC = () => {
           }}
         >
           <ParamCardMini key="COT 021F-102" parameter={cot_021_F102} />
+        </div>
+        <div
+          className="absolute w-40 "
+          style={{
+            transform: "scale(0.60) translate(-50%, -50%) ",
+            left: "24%",
+            top: "40%",
+          }}
+        >
+          <TubeSkinList
+            key="Tube Skin"
+            parameters={tube_skins_f1_param.filter(
+              (param): param is ParameterData => param !== 0
+            )}
+          />
+        </div>
+        <div
+          className="absolute w-40 "
+          style={{
+            transform: "scale(0.60) translate(-50%, -50%) ",
+            left: "56%",
+            top: "40%",
+          }}
+        >
+          <TubeSkinList
+            key="Tube Skin"
+            parameters={tube_skins_f2_param.filter(
+              (param): param is ParameterData => param !== 0
+            )}
+          />
+        </div>
+        <div
+          className="absolute w-full "
+          style={{
+            transform: "scale(0.60) translate(-50%, -50%) ",
+            left: "76%",
+            top: "76%",
+          }}
+        >
+          <TubeSkinList025
+            key="Tube Skin"
+            parameters={tube_skins_25f1_param.filter(
+              (param): param is ParameterData => param !== 0
+            )}
+          />
         </div>
       </div>
     </div>

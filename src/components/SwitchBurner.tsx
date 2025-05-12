@@ -1,33 +1,33 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export type BoxState = "O" | "G" | "D" | "Off";
+export type BurnerState = "O" | "G" | "D" | "Off";
 
-interface SwitchBoxProps {
-  state: BoxState;
-  onClick: () => void;
+interface SwitchBurnerProps {
+  state: BurnerState;
+  onClick: (newState: BurnerState) => void;
   className?: string;
 }
 
 const StateDialog: React.FC<{
   isOpen: boolean;
   onClose: () => void;
-  currentState: BoxState;
-  onSelect: (newState: BoxState) => void;
+  currentState: BurnerState;
+  onSelect: (newState: BurnerState) => void;
 }> = ({ isOpen, onClose, currentState, onSelect }) => {
-  const states: BoxState[] = ["O", "G", "D", "Off"];
+  const states: BurnerState[] = ["O", "G", "D", "Off"];
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-transparent bg-opacity-50 flex items-center justify-center z-50 w-72">
+    <div className="fixed inset-0 bg-transparent bg-opacity-50 flex items-center justify-center z-50 w-80">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white rounded-lg p-6 shadow-xl"
+        className="bg-white rounded-lg p-6 shadow-xl ml-20"
       >
-        <h3 className="text-lg font-bold mb-4">Select New State</h3>
+        <h3 className="text-base font-bold mb-4">Choose Burner Fuel</h3>
         <div className="grid grid-cols-2 gap-3 mb-4">
           {states.map((stateOption) => (
             <button
@@ -68,7 +68,7 @@ const StateDialog: React.FC<{
   );
 };
 
-const SwitchBox: React.FC<SwitchBoxProps> = ({
+const SwitchBurner: React.FC<SwitchBurnerProps> = ({
   state,
   onClick,
   className = "",
@@ -88,9 +88,9 @@ const SwitchBox: React.FC<SwitchBoxProps> = ({
     }
   };
 
-  const handleStateChange = (newState: BoxState) => {
+  const handleStateChange = (newState: BurnerState) => {
     if (newState !== state) {
-      onClick();
+      onClick(newState);
     }
   };
 
@@ -106,7 +106,7 @@ const SwitchBox: React.FC<SwitchBoxProps> = ({
           transition-colors duration-200 ease-in-out
           text-white shadow-md
         `}
-        aria-label={`Switch box - current state: ${state}`}
+        aria-label={`Switch burner - current state: ${state}`}
       >
         {state !== "Off" ? state : ""}
       </motion.button>
@@ -125,4 +125,4 @@ const SwitchBox: React.FC<SwitchBoxProps> = ({
   );
 };
 
-export default SwitchBox;
+export default SwitchBurner;
