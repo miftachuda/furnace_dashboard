@@ -219,8 +219,8 @@ const Dashboard: React.FC = () => {
     name: "Capacity HVU II (021)",
     value: capacity_021,
     unit: "%",
-    lowThreshold: 65,
-    highThreshold: 70,
+    lowThreshold: 62,
+    highThreshold: 105,
     history: list_capacity_021,
     icon: "flowmeter", // could be a filename or icon name
     description: "Capacity unit 021",
@@ -302,7 +302,7 @@ const Dashboard: React.FC = () => {
     name: "BWT Temp 021F-101",
     value: bwt_021_F101_values[bwt_021_F101_values.length - 1],
     unit: "℃",
-    lowThreshold: 500,
+    lowThreshold: 0,
     highThreshold: 830,
     history: bwt_021_F101_values,
     icon: "calculator", // could be a filename or icon name
@@ -314,7 +314,7 @@ const Dashboard: React.FC = () => {
     name: "BWT Temp 021F-102",
     value: bwt_021_F102_values[bwt_021_F102_values.length - 1],
     unit: "℃",
-    lowThreshold: 500,
+    lowThreshold: 0,
     highThreshold: 830,
     history: bwt_021_F102_values,
     icon: "calculator", // could be a filename or icon name
@@ -326,7 +326,7 @@ const Dashboard: React.FC = () => {
     name: "BWT Temp 025F-101 South",
     value: bwt_025_F101_s_values[bwt_025_F101_s_values.length - 1],
     unit: "℃",
-    lowThreshold: 500,
+    lowThreshold: 0,
     highThreshold: 830,
     history: bwt_025_F101_s_values,
     icon: "calculator", // could be a filename or icon name
@@ -338,7 +338,7 @@ const Dashboard: React.FC = () => {
     name: "BWT Temp 025F-101 North",
     value: bwt_025_F101_u_values[bwt_025_F101_u_values.length - 1],
     unit: "℃",
-    lowThreshold: 500,
+    lowThreshold: 0,
     highThreshold: 830,
     history: bwt_025_F101_u_values,
     icon: "calculator", // could be a filename or icon name
@@ -533,9 +533,9 @@ const Dashboard: React.FC = () => {
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(0.96) translate(-50%, -50%) ",
-            left: "13%",
-            top: "65%",
+            transform: "scale(0.36) translate(-50%, -50%) ",
+            left: "12%",
+            top: "55%",
           }}
         >
           <TemperatureDisplay temperature={delta021F101} />
@@ -543,9 +543,9 @@ const Dashboard: React.FC = () => {
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(0.96) translate(-50%, -50%) ",
-            left: "45%",
-            top: "65%",
+            transform: "scale(0.36) translate(-50%, -50%) ",
+            left: "42%",
+            top: "55%",
           }}
         >
           <TemperatureDisplay temperature={delta021F102} />
@@ -553,9 +553,9 @@ const Dashboard: React.FC = () => {
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(0.96) translate(-50%, -50%) ",
-            left: "77%",
-            top: "65%",
+            transform: "scale(0.36) translate(-50%, -50%) ",
+            left: "72%",
+            top: "55%",
           }}
         >
           <TemperatureDisplay temperature={delta025F101} />
@@ -650,7 +650,7 @@ const Dashboard: React.FC = () => {
 
         {/* TSRF 021 */}
         <div
-          className="absolute w-56 "
+          className="absolute w-64"
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "28%",
@@ -662,7 +662,7 @@ const Dashboard: React.FC = () => {
 
         {/* TSRF 025 */}
         <div
-          className="absolute w-56 "
+          className="absolute w-64"
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "78%",

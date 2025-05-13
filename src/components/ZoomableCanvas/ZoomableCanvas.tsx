@@ -73,7 +73,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
-        className={`${isPanning ? "cursor-grabbing" : "cursor-grab"}`}
+        className={``}
         style={{
           width: VIRTUAL_WIDTH,
           height: VIRTUAL_HEIGHT,

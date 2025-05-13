@@ -40,7 +40,7 @@ const ParameterCard: React.FC<ParameterCardProps> = ({ parameter }) => {
       </div>
 
       <div className="flex items-baseline gap-1 mt-3">
-        <span className="text-3xl font-bold text-slate-100 transition-all duration-300">
+        <span className="text-4xl font-bold text-slate-100 transition-all duration-300">
           {formatNumber3(parameter.value)}
         </span>
         <span className="text-slate-400 text-sm">{parameter.unit}</span>
