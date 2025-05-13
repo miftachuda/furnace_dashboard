@@ -303,7 +303,7 @@ const Dashboard: React.FC = () => {
     value: bwt_021_F101_values[bwt_021_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 500,
-    highThreshold: 850,
+    highThreshold: 830,
     history: bwt_021_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "BWT 021F101",
@@ -315,7 +315,7 @@ const Dashboard: React.FC = () => {
     value: bwt_021_F102_values[bwt_021_F102_values.length - 1],
     unit: "℃",
     lowThreshold: 500,
-    highThreshold: 850,
+    highThreshold: 830,
     history: bwt_021_F102_values,
     icon: "calculator", // could be a filename or icon name
     description: "BWT 021F102",
@@ -327,7 +327,7 @@ const Dashboard: React.FC = () => {
     value: bwt_025_F101_s_values[bwt_025_F101_s_values.length - 1],
     unit: "℃",
     lowThreshold: 500,
-    highThreshold: 850,
+    highThreshold: 830,
     history: bwt_025_F101_s_values,
     icon: "calculator", // could be a filename or icon name
     description: "BWT 025F101 South",
@@ -339,7 +339,7 @@ const Dashboard: React.FC = () => {
     value: bwt_025_F101_u_values[bwt_025_F101_u_values.length - 1],
     unit: "℃",
     lowThreshold: 500,
-    highThreshold: 850,
+    highThreshold: 830,
     history: bwt_025_F101_u_values,
     icon: "calculator", // could be a filename or icon name
     description: "BWT 025F101 North",
@@ -365,8 +365,8 @@ const Dashboard: React.FC = () => {
     name: "COT Temp 025F-101",
     value: cot_025_F101_values[cot_025_F101_values.length - 1],
     unit: "℃",
-    lowThreshold: 280,
-    highThreshold: 330,
+    lowThreshold: 288,
+    highThreshold: 306,
     history: cot_025_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "CIT 025F101",
@@ -378,7 +378,7 @@ const Dashboard: React.FC = () => {
     value: cit_021_F101_values[cit_021_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 280,
-    highThreshold: 300,
+    highThreshold: 350,
     history: cit_021_F101_values,
     icon: "calculator", // could be a filename or icon name
     description: "CIT 021F101",
@@ -389,7 +389,7 @@ const Dashboard: React.FC = () => {
     name: "COT Temp 021F-101",
     value: cot_021_F101_values[cot_021_F101_values.length - 1],
     unit: "℃",
-    lowThreshold: 300,
+    lowThreshold: 372,
     highThreshold: 390,
     history: cot_021_F101_values,
     icon: "calculator", // could be a filename or icon name
@@ -401,7 +401,7 @@ const Dashboard: React.FC = () => {
     name: "CIT Temp 021F-102",
     value: cit_021_F102_values[cit_021_F102_values.length - 1],
     unit: "℃",
-    lowThreshold: 300,
+    lowThreshold: 280,
     highThreshold: 350,
     history: cit_021_F102_values,
     icon: "calculator", // could be a filename or icon name
@@ -413,7 +413,7 @@ const Dashboard: React.FC = () => {
     name: "COT Temp 021F-102",
     value: cot_021_F102_values[cot_021_F102_values.length - 1],
     unit: "℃",
-    lowThreshold: 300,
+    lowThreshold: 373,
     highThreshold: 390,
     history: cot_021_F102_values,
     icon: "calculator", // could be a filename or icon name
@@ -437,7 +437,7 @@ const Dashboard: React.FC = () => {
           value: value,
           unit: "%",
           lowThreshold: 300,
-          highThreshold: 450,
+          highThreshold: 520,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
@@ -469,7 +469,7 @@ const Dashboard: React.FC = () => {
           value: value,
           unit: "%",
           lowThreshold: 300,
-          highThreshold: 450,
+          highThreshold: 520,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
