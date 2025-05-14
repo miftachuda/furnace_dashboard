@@ -435,7 +435,7 @@ const Dashboard: React.FC = () => {
           id: "Skin Pass " + pass,
           name: "Pass " + pass,
           value: value,
-          unit: "%",
+          unit: "℃",
           lowThreshold: 300,
           highThreshold: 520,
           history: [],
