@@ -429,7 +429,7 @@ const Dashboard: React.FC = () => {
   );
   const tube_skins_f1_param = tube_skins_f1.map(
     (value: number | null, index: number) => {
-      let pass = index + 1;
+      const pass = index + 1;
       if (value) {
         const param: ParameterData = {
           id: "Skin Pass " + pass,
@@ -461,13 +461,13 @@ const Dashboard: React.FC = () => {
   );
   const tube_skins_f2_param = tube_skins_f2.map(
     (value: number | null, index: number) => {
-      let pass = index + 1;
+      const pass = index + 1;
       if (value) {
         const param: ParameterData = {
           id: "Skin Pass " + pass,
           name: "Pass " + pass,
           value: value,
-          unit: "%",
+          unit: "℃",
           lowThreshold: 300,
           highThreshold: 520,
           history: [],
@@ -495,13 +495,13 @@ const Dashboard: React.FC = () => {
   );
   const tube_skins_25f1_param = tube_skins_25f1.map(
     (value: number | null, index: number) => {
-      let pass = index + 1;
+      const pass = index + 1;
       if (value) {
         const param: ParameterData = {
           id: "Skin Pass " + pass,
           name: "Pass " + pass,
           value: value,
-          unit: "%",
+          unit: "℃",
           lowThreshold: 300,
           highThreshold: 450,
           history: [],
