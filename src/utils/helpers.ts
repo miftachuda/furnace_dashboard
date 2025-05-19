@@ -15,12 +15,34 @@ export function getParameterStatus(parameter: ParameterData): ParameterStatus {
 export function getStatusColor(status: ParameterStatus): string {
   switch (status) {
     case "danger":
-      return "bg-red-500";
+      return "bg-red-500 animate-blink";
     case "warning":
-      return "bg-amber-500";
+      return "bg-amber-500 animate-blink";
     case "normal":
     default:
       return "bg-emerald-500";
+  }
+}
+export function getBoxColor(status: ParameterStatus): string {
+  switch (status) {
+    case "danger":
+      return "bg-red-500  animate-[ping_2s_linear_infinite] opacity-30";
+    case "warning":
+      return "bg-amber-500  animate-[ping_2s_linear_infinite] opacity-30";
+    case "normal":
+    default:
+      return "bg-slate-100 opacity-0";
+  }
+}
+export function getTextColor(status: ParameterStatus): string {
+  switch (status) {
+    case "danger":
+      return "text-red-500 animate-blink";
+    case "warning":
+      return "text-amber-500 animate-blink";
+    case "normal":
+    default:
+      return "text-slate-100";
   }
 }
 

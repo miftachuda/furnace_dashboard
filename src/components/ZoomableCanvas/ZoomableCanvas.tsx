@@ -67,6 +67,9 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
     <div
       className="fixed inset-0 overflow-hidden bg-black"
       onWheel={handleWheelZoom}
+      style={{
+        transform: `translate(0,${11}vh`,
+      }}
     >
       <div
         onMouseDown={handleMouseDown}
@@ -77,8 +80,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
         style={{
           width: VIRTUAL_WIDTH,
           height: VIRTUAL_HEIGHT,
-          transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`,
-          transformOrigin: "top left",
+
           position: "absolute",
         }}
       >
@@ -90,6 +92,8 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
           style={{
             width: VIRTUAL_WIDTH,
             height: VIRTUAL_HEIGHT,
+            transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`,
+            transformOrigin: "top left",
             position: "absolute",
             top: 0,
             left: 0,
@@ -102,6 +106,8 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
             width: VIRTUAL_WIDTH,
             height: VIRTUAL_HEIGHT,
             position: "absolute",
+            transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`,
+            transformOrigin: "top left",
             top: 0,
             left: 0,
           }}

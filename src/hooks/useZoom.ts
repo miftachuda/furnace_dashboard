@@ -5,12 +5,12 @@ export const useZoom = (initialScale = 1, minScale = 0.25, maxScale = 4) => {
 
   // Zoom in function - increases scale by 0.1 or to max
   const handleZoomIn = useCallback(() => {
-    setScale((prevScale) => Math.min(prevScale + 0.1, maxScale));
+    setScale((prevScale) => Math.min(prevScale + 0.02, maxScale));
   }, [maxScale]);
 
   // Zoom out function - decreases scale by 0.1 or to min
   const handleZoomOut = useCallback(() => {
-    setScale((prevScale) => Math.max(prevScale - 0.1, minScale));
+    setScale((prevScale) => Math.max(prevScale - 0.02, minScale));
   }, [minScale]);
 
   // Reset zoom to initial scale

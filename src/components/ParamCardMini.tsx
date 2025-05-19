@@ -4,6 +4,7 @@ import {
   getParameterStatus,
   getStatusColor,
   formatNumber1,
+  getTextColor,
 } from "../utils/helpers";
 import StatusIndicator from "./StatusIndicator";
 
@@ -19,7 +20,7 @@ const ParamCardMini: React.FC<ParamCardMiniProps> = ({ parameter }) => {
       className={`relative bg-slate-800 rounded-lg p-2 border bg-opacity-50 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
     >
       <div
-        className={`absolute top-0 right-0 left-0 h-1 ${getStatusColor(
+        className={`absolute top-0 right-0 left-0 h-3 ${getStatusColor(
           status
         )} ${
           ["bg-red-500", "bg-amber-500"].includes(getStatusColor(status))
@@ -28,7 +29,7 @@ const ParamCardMini: React.FC<ParamCardMiniProps> = ({ parameter }) => {
         }`}
       />
 
-      <div className="flex justify-between items-start mb-0">
+      <div className="flex justify-between items-start mt-4 mb-0">
         <div className="flex items-center gap-2">
           <h3 className="font-medium text-slate-200">{parameter.name}</h3>
         </div>
@@ -36,7 +37,11 @@ const ParamCardMini: React.FC<ParamCardMiniProps> = ({ parameter }) => {
       </div>
 
       <div className="flex items-baseline gap-1 mt-0">
-        <span className="text-3xl font-bold text-slate-100 transition-all duration-300">
+        <span
+          className={`text-3xl font-bold text-slate-100 transition-all duration-300 ${getTextColor(
+            status
+          )} `}
+        >
           {formatNumber1(parameter.value)}
         </span>
         <span className="text-slate-400 text-sm">{parameter.unit}</span>

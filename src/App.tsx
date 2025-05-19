@@ -8,7 +8,7 @@ const BACKGROUND_IMAGE = "/assets/bg2.jpg";
 
 function App() {
   return (
-    <div className="w-full h-screen overflow-hidden">
+    <div className="w-full h-full">
       <Headers></Headers>
       <ParameterProvider>
         <ZoomableCanvas backgroundImage={BACKGROUND_IMAGE}>

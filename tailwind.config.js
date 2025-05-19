@@ -21,7 +21,7 @@ module.exports = {
       },
       animation: {
         flicker: "flicker 0.5s infinite alternate",
-        blink: "blink 1s step-start infinite",
+        blink: "blink 2s step-start infinite",
       },
     },
   },

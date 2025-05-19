@@ -11,12 +11,12 @@ const StatusIndicator: React.FC<StatusIndicatorProps> = ({
   status,
   pulse = false,
 }) => {
-  const baseClasses = "w-3 h-3 rounded-full";
+  const baseClasses = "w-6 h-6 rounded-full";
   const colorClass = getStatusColor(status);
   const pulseClass = pulse && status !== "normal" ? "animate-pulse" : "";
 
   return (
-    <div className={`flex h-[1.5vh] w-[1.5vh] items-center justify-center`}>
+    <div className={`flex h-[3.5vh] w-[3.5vh] items-center justify-center`}>
       <span
         className={`animate-ping absolute inline-flex ${baseClasses} rounded-full ${colorClass} opacity-75`}
       ></span>

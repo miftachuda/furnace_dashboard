@@ -436,8 +436,8 @@ const Dashboard: React.FC = () => {
           name: "Pass " + pass,
           value: value,
           unit: "℃",
-          lowThreshold: 300,
-          highThreshold: 520,
+          lowThreshold: 350,
+          highThreshold: 450,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
@@ -468,8 +468,8 @@ const Dashboard: React.FC = () => {
           name: "Pass " + pass,
           value: value,
           unit: "℃",
-          lowThreshold: 300,
-          highThreshold: 520,
+          lowThreshold: 350,
+          highThreshold: 450,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
@@ -516,7 +516,7 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-full">
       {/* Parameter cards layered on top */}
       <div className="absolute inset-0 z-10 p-6">
         <div
