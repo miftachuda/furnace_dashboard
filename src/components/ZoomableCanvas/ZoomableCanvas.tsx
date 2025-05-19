@@ -17,8 +17,9 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const panStart = useRef({ x: 0, y: 0 });
 
-  const VIRTUAL_WIDTH = 2048;
+  const VIRTUAL_WIDTH = 2148;
   const VIRTUAL_HEIGHT = 1018;
+  const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
     const updateScale = () => {
       const vw = window.innerWidth;
@@ -32,7 +33,32 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
     updateScale();
     return () => window.removeEventListener("resize", updateScale);
   }, []);
+  useEffect(() => {
+    const checkFullscreen = () => {
+      setIsFullscreen(
+        document.fullscreen ||
+          (document as any).webkitFullscreen ||
+          (document as any).mozFullScreen ||
+          (document as any).msFullscreen
+          ? true
+          : false
+      );
+    };
 
+    document.addEventListener("fullscreenchange", checkFullscreen);
+    document.addEventListener("webkitfullscreenchange", checkFullscreen);
+    document.addEventListener("mozfullscreenchange", checkFullscreen);
+    document.addEventListener("MSFullscreenChange", checkFullscreen);
+
+    checkFullscreen(); // check on mount
+
+    return () => {
+      document.removeEventListener("fullscreenchange", checkFullscreen);
+      document.removeEventListener("webkitfullscreenchange", checkFullscreen);
+      document.removeEventListener("mozfullscreenchange", checkFullscreen);
+      document.removeEventListener("MSFullscreenChange", checkFullscreen);
+    };
+  }, []);
   const {
     scale,
     setScale,
@@ -68,7 +94,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
       className="fixed inset-0 overflow-hidden bg-black"
       onWheel={handleWheelZoom}
       style={{
-        transform: `translate(0,${7}vh`,
+        transform: `translate(0,${isFullscreen ? "12vh" : "3vh"})`,
       }}
     >
       <div
@@ -117,7 +143,12 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
       </div>
 
       {/* Zoom controls */}
-      <div className="absolute bottom-16 left-4 z-10">
+      <div
+        className="absolute top-14 right-4 z-10"
+        style={{
+          transform: "scale(0.60) translate(30%, -50%) ",
+        }}
+      >
         <ZoomControls
           scale={scale}
           onZoomIn={handleZoomIn}

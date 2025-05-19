@@ -19,13 +19,13 @@ const BurnerColumn: React.FC<BurnerColumnProps> = ({
   onBurnerClick,
 }) => {
   return (
-    <div className="flex flex-col gap-4 items-start relative">
+    <div className="flex flex-row-reverse gap-2 mx-6 items-center relative">
       {items.map((item) => (
         <div
           key={item.id}
-          className={`flex items-center ${
-            reversed ? "flex-row-reverse" : "flex-row"
-          } gap-4`}
+          className={`flex items-center mx-2 ${
+            reversed ? "flex-col-reverse" : "flex-col"
+          } gap-2`}
         >
           <span className="text-2xl font-bold text-cyan-300">
             {item.number}

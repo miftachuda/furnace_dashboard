@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       style={{
         transformOrigin: "top left",
         width: `100vw`,
-        height: `11vh`,
+        height: `9vh`,
       }}
       className="bg-slate-900/100 backdrop-blur-sm border-b border-slate-800 py-[1vh] px-[2vh] flex justify-between items-center fixed top-0 left-0 right-0 z-50"
     >

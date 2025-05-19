@@ -300,7 +300,7 @@ const Dashboard: React.FC = () => {
   const bwt_021_F101_values = getValuesByTag("021TI_025.pv", datas);
   const bwt_021_F101: ParameterData = {
     id: "BWT021F101",
-    name: "BWT Temp 021F-101",
+    name: "BWT 021F-101",
     value: bwt_021_F101_values[bwt_021_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 0,
@@ -312,7 +312,7 @@ const Dashboard: React.FC = () => {
   const bwt_021_F102_values = getValuesByTag("021TI_059.pv", datas);
   const bwt_021_F102: ParameterData = {
     id: "BWT021F102",
-    name: "BWT Temp 021F-102",
+    name: "BWT 021F-102",
     value: bwt_021_F102_values[bwt_021_F102_values.length - 1],
     unit: "℃",
     lowThreshold: 0,
@@ -324,7 +324,7 @@ const Dashboard: React.FC = () => {
   const bwt_025_F101_s_values = getValuesByTag("025TI_094.PV", datas);
   const bwt_025_F101_s: ParameterData = {
     id: "BWT025F101South",
-    name: "BWT Temp 025F-101 South",
+    name: "BWT 025F-101 South",
     value: bwt_025_F101_s_values[bwt_025_F101_s_values.length - 1],
     unit: "℃",
     lowThreshold: 0,
@@ -336,7 +336,7 @@ const Dashboard: React.FC = () => {
   const bwt_025_F101_u_values = getValuesByTag("025TI_013.PV", datas);
   const bwt_025_F101_u: ParameterData = {
     id: "BWT025F101North",
-    name: "BWT Temp 025F-101 North",
+    name: "BWT 025F-101 North",
     value: bwt_025_F101_u_values[bwt_025_F101_u_values.length - 1],
     unit: "℃",
     lowThreshold: 0,
@@ -351,7 +351,7 @@ const Dashboard: React.FC = () => {
   const cit_025_F101_values = getValuesByTag("025TI_001.pv", datas);
   const cit_025_F101: ParameterData = {
     id: "CIT025F101",
-    name: "CIT Temp 025F-101",
+    name: "CIT 025F-101",
     value: cit_025_F101_values[cit_025_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 230,
@@ -363,7 +363,7 @@ const Dashboard: React.FC = () => {
   const cot_025_F101_values = getValuesByTag("025TIC_092.pv", datas);
   const cot_025_F101: ParameterData = {
     id: "COT025F101",
-    name: "COT Temp 025F-101",
+    name: "COT 025F-101",
     value: cot_025_F101_values[cot_025_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 288,
@@ -375,7 +375,7 @@ const Dashboard: React.FC = () => {
   const cit_021_F101_values = getValuesByTag("021TI_708.pv", datas);
   const cit_021_F101: ParameterData = {
     id: "CIT021F101",
-    name: "CIT Temp 021F-101",
+    name: "CIT 21F-101",
     value: cit_021_F101_values[cit_021_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 280,
@@ -387,7 +387,7 @@ const Dashboard: React.FC = () => {
   const cot_021_F101_values = getValuesByTag("021TIC_271.pv", datas);
   const cot_021_F101: ParameterData = {
     id: "COT021F101",
-    name: "COT Temp 021F-101",
+    name: "COT 021F-101",
     value: cot_021_F101_values[cot_021_F101_values.length - 1],
     unit: "℃",
     lowThreshold: 372,
@@ -399,7 +399,7 @@ const Dashboard: React.FC = () => {
   const cit_021_F102_values = getValuesByTag("021TI_041.pv", datas);
   const cit_021_F102: ParameterData = {
     id: "CIT021F102",
-    name: "CIT Temp 021F-102",
+    name: "CIT 021F-102",
     value: cit_021_F102_values[cit_021_F102_values.length - 1],
     unit: "℃",
     lowThreshold: 280,
@@ -411,7 +411,7 @@ const Dashboard: React.FC = () => {
   const cot_021_F102_values = getValuesByTag("021TIC_288.pv", datas);
   const cot_021_F102: ParameterData = {
     id: "COT021F102",
-    name: "COT Temp 021F-102",
+    name: "COT 021F-102",
     value: cot_021_F102_values[cot_021_F102_values.length - 1],
     unit: "℃",
     lowThreshold: 373,
@@ -558,8 +558,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-90 h-90"
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "90%",
-            top: "56%",
+            left: "74%",
+            top: "81%",
           }}
         >
           <BoxPanel />
@@ -591,8 +591,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-64 h-64"
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "76%",
-            top: "69%",
+            left: "78%",
+            top: "66%",
           }}
         >
           {" "}
@@ -603,7 +603,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.96) translate(-50%, -50%) ",
             left: "15%",
-            top: "77%",
+            top: "74%",
           }}
         >
           <img
@@ -631,7 +631,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.96) translate(-50%, -50%) ",
             left: "80%",
-            top: "77%",
+            top: "74%",
           }}
         >
           <img
@@ -692,7 +692,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "32%",
-            top: "60%",
+            top: "40%",
           }}
         >
           <ParameterCard key="021 TSRF" parameter={tsrf021} />
@@ -704,7 +704,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "78%",
-            top: "60%",
+            top: "37%",
           }}
         >
           <ParameterCard key="025 TSRF" parameter={tsrf025} />
@@ -741,7 +741,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "71%",
-            top: "19%",
+            top: "16%",
           }}
         >
           <ParameterCard key="Oxygen 025F101 South" parameter={o2025selatan} />
@@ -753,7 +753,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "82%",
-            top: "19%",
+            top: "16%",
           }}
         >
           <ParameterCard key="Oxygen 025F101 North" parameter={o2025utara} />
@@ -787,7 +787,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "71%",
-            top: "47%",
+            top: "54%",
           }}
         >
           <ParamCardMini key="BWT 025F-102" parameter={bwt_025_F101_s} />
@@ -798,7 +798,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "82%",
-            top: "47%",
+            top: "54%",
           }}
         >
           <ParamCardMini key="BWT 025F-102" parameter={bwt_025_F101_u} />
@@ -808,8 +808,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "64%",
-            top: "76%",
+            left: "69%",
+            top: "73%",
           }}
         >
           <ParamCardMini key="CIT 025F-102" parameter={cit_025_F101} />
@@ -820,7 +820,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "87%",
-            top: "76%",
+            top: "73%",
           }}
         >
           <ParamCardMini key="COT 025F-102" parameter={cot_025_F101} />
@@ -873,8 +873,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-40 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "24%",
-            top: "40%",
+            left: "22%",
+            top: "60%",
           }}
         >
           <TubeSkinList
@@ -888,8 +888,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-40 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "56%",
-            top: "40%",
+            left: "51%",
+            top: "60%",
           }}
         >
           <TubeSkinList
@@ -900,11 +900,11 @@ const Dashboard: React.FC = () => {
           />
         </div>
         <div
-          className="absolute h-40 w-auto"
+          className="absolute"
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "72%",
-            top: "72%",
+            left: "90%",
+            top: "39%",
           }}
         >
           <TubeSkinList025
