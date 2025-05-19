@@ -18,10 +18,29 @@ module.exports = {
         blink: {
           "50%": { opacity: "0" },
         },
+        box: {
+          "50%": { opacity: "0" },
+        },
+        breathe: {
+          "0%, 100%": { opacity: "0.0" },
+          "50%": { opacity: "0.4" },
+        },
+        textred: {
+          "0%, 100%": { color: "#ef4444" }, // red-500
+          "50%": { color: "#ffffff" }, // white
+        },
+        textamber: {
+          "0%, 100%": { color: "#f59e0b" }, // amber-500
+          "50%": { color: "#ffffff" }, // white
+        },
       },
       animation: {
         flicker: "flicker 0.5s infinite alternate",
         blink: "blink 2s step-start infinite",
+        breathe: "breathe 2s ease-in-out infinite",
+        textred: "textred 2s step-start infinite",
+        textamber: "textamber 2s step-start infinite",
+        box: "box 2s step-start infinite",
       },
     },
   },

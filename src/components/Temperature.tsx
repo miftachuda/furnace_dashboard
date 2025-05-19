@@ -10,11 +10,11 @@ const TemperatureDisplay = ({ temperature = 30 }) => {
           left: "0%",
         }}
       >
-        <img
+        {/* <img
           src="/assets/arrow.gif"
           alt="Status animation"
           className="w-full h-full pointer-events-none object-contain"
-        />
+        /> */}
       </div>
       <div
         className="absolute text-6xl font-extrabold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 text-transparent bg-clip-text bottom-2"

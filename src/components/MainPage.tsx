@@ -17,6 +17,7 @@ import BoxPanel from "./BurnerPanel";
 import FuelToggle1B from "./FuelToggle1B";
 import TubeSkinList from "./TubeSkinList";
 import TubeSkinList025 from "./TubeSkinList025";
+import DeltaTemp from "./DeltaTemp";
 
 // 021
 
@@ -419,9 +420,43 @@ const Dashboard: React.FC = () => {
     icon: "calculator", // could be a filename or icon name
     description: "COT 021F102",
   };
-  const delta021F101 = cot_021_F101.value - cit_021_F101.value;
-  const delta021F102 = cot_021_F102.value - cit_021_F102.value;
-  const delta025F101 = cot_025_F101.value - cit_025_F101.value;
+  //const delta021F101 = cot_021_F101.value - cit_021_F101.value;
+  //const delta021F102 = cot_021_F102.value - cit_021_F102.value;
+  //const delta025F101 = cot_025_F101.value - cit_025_F101.value;
+
+  const delta021F101: ParameterData = {
+    id: "Delta021F101",
+    name: "Delta 021F101",
+    value: cot_021_F101.value - cit_021_F101.value,
+    unit: "℃",
+    lowThreshold: 40,
+    highThreshold: 90,
+    history: [cot_021_F101.value - cit_021_F101.value],
+    icon: "calculator", // could be a filename or icon name
+    description: "Delta 021F101",
+  };
+  const delta021F102: ParameterData = {
+    id: "Delta021F102",
+    name: "Delta 021F102",
+    value: cot_021_F102.value - cit_021_F102.value,
+    unit: "℃",
+    lowThreshold: 20,
+    highThreshold: 40,
+    history: [cot_021_F102.value - cit_021_F102.value],
+    icon: "calculator", // could be a filename or icon name
+    description: "Delta 021F102",
+  };
+  const delta025F101: ParameterData = {
+    id: "Delta025F101",
+    name: "Delta 025F101",
+    value: cot_025_F101.value - cit_025_F101.value,
+    unit: "℃",
+    lowThreshold: 30,
+    highThreshold: 60,
+    history: [cot_025_F101.value - cit_025_F101.value],
+    icon: "calculator", // could be a filename or icon name
+    description: "Delta 025F101",
+  };
 
   const tube_skins_f1 = getMultiValueByTags(
     ["021TI_263.pv", "021TI_264.pv", "021TI_265.pv", "021TI_266.pv"],
@@ -503,7 +538,7 @@ const Dashboard: React.FC = () => {
           value: value,
           unit: "℃",
           lowThreshold: 300,
-          highThreshold: 450,
+          highThreshold: 350,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
@@ -524,7 +559,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "90%",
-            top: "20%",
+            top: "56%",
           }}
         >
           <BoxPanel />
@@ -533,39 +568,42 @@ const Dashboard: React.FC = () => {
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(0.36) translate(-50%, -50%) ",
+            transform: "scale(0.60) translate(-50%, -50%) ",
             left: "12%",
-            top: "55%",
+            top: "69%",
           }}
         >
-          <TemperatureDisplay temperature={delta021F101} />
+          <DeltaTemp parameter={delta021F101} />
+          {/* <TemperatureDisplay temperature={delta021F101} /> */}
         </div>
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(0.36) translate(-50%, -50%) ",
-            left: "42%",
-            top: "55%",
+            transform: "scale(0.60) translate(-50%, -50%) ",
+            left: "43%",
+            top: "69%",
           }}
         >
-          <TemperatureDisplay temperature={delta021F102} />
+          <DeltaTemp parameter={delta021F102} />
+          {/* <TemperatureDisplay temperature={delta021F102} /> */}
         </div>
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(0.36) translate(-50%, -50%) ",
-            left: "72%",
-            top: "55%",
+            transform: "scale(0.60) translate(-50%, -50%) ",
+            left: "76%",
+            top: "69%",
           }}
         >
-          <TemperatureDisplay temperature={delta025F101} />
+          {" "}
+          <DeltaTemp parameter={delta025F101} />
         </div>
         <div
           className="absolute w-64 h-64"
           style={{
             transform: "scale(0.96) translate(-50%, -50%) ",
-            left: "16%",
-            top: "65%",
+            left: "15%",
+            top: "77%",
           }}
         >
           <img
@@ -578,8 +616,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-64 h-64"
           style={{
             transform: "scale(0.96) translate(-50%, -50%) ",
-            left: "47%",
-            top: "65%",
+            left: "46%",
+            top: "77%",
           }}
         >
           <img
@@ -591,9 +629,9 @@ const Dashboard: React.FC = () => {
         <div
           className="absolute w-64 h-64"
           style={{
-            transform: "scale(1.36) translate(-50%, -50%) ",
+            transform: "scale(0.96) translate(-50%, -50%) ",
             left: "80%",
-            top: "70%",
+            top: "77%",
           }}
         >
           <img
@@ -608,7 +646,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.46) translate(-50%, -50%) ",
             left: "9%",
-            top: "80%",
+            top: "92%",
           }}
         >
           <FuelToggle1 />
@@ -618,7 +656,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.46) translate(-50%, -50%) ",
             left: "16%",
-            top: "80%",
+            top: "92%",
           }}
         >
           <FuelToggle1B />
@@ -629,7 +667,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.46) translate(-50%, -50%) ",
             left: "43%",
-            top: "80%",
+            top: "92%",
           }}
         >
           <FuelToggle2 />
@@ -653,8 +691,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-64"
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "28%",
-            top: "88%",
+            left: "32%",
+            top: "60%",
           }}
         >
           <ParameterCard key="021 TSRF" parameter={tsrf021} />
@@ -666,7 +704,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "78%",
-            top: "88%",
+            top: "60%",
           }}
         >
           <ParameterCard key="025 TSRF" parameter={tsrf025} />
@@ -771,7 +809,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "64%",
-            top: "64%",
+            top: "76%",
           }}
         >
           <ParamCardMini key="CIT 025F-102" parameter={cit_025_F101} />
@@ -782,7 +820,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "87%",
-            top: "64%",
+            top: "76%",
           }}
         >
           <ParamCardMini key="COT 025F-102" parameter={cot_025_F101} />
@@ -792,30 +830,30 @@ const Dashboard: React.FC = () => {
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "5%",
-            top: "64%",
+            left: "4%",
+            top: "76%",
           }}
         >
-          <ParamCardMini key="CIT 021F-102" parameter={cit_021_F101} />
+          <ParamCardMini key="CIT 021F-101" parameter={cit_021_F101} />
         </div>
         {/* COT 021F-101  */}
         <div
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "23%",
-            top: "64%",
+            left: "22%",
+            top: "76%",
           }}
         >
-          <ParamCardMini key="COT 021F-102" parameter={cot_021_F101} />
+          <ParamCardMini key="COT 021F-101" parameter={cot_021_F101} />
         </div>
         {/* CIT 021F-102  */}
         <div
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "36%",
-            top: "64%",
+            left: "35%",
+            top: "76%",
           }}
         >
           <ParamCardMini key="CIT 021F-102" parameter={cit_021_F102} />
@@ -825,8 +863,8 @@ const Dashboard: React.FC = () => {
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "54%",
-            top: "64%",
+            left: "53%",
+            top: "76%",
           }}
         >
           <ParamCardMini key="COT 021F-102" parameter={cot_021_F102} />
@@ -840,7 +878,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <TubeSkinList
-            key="Tube Skin"
+            key="Tube Skin 021F101"
             parameters={tube_skins_f1_param.filter(
               (param): param is ParameterData => param !== 0
             )}
@@ -855,7 +893,7 @@ const Dashboard: React.FC = () => {
           }}
         >
           <TubeSkinList
-            key="Tube Skin"
+            key="Tube Skin 021F102"
             parameters={tube_skins_f2_param.filter(
               (param): param is ParameterData => param !== 0
             )}

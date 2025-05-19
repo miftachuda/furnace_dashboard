@@ -26,20 +26,20 @@ export function getStatusColor(status: ParameterStatus): string {
 export function getBoxColor(status: ParameterStatus): string {
   switch (status) {
     case "danger":
-      return "bg-red-500  animate-[ping_2s_linear_infinite] opacity-30";
+      return "bg-red-500  animate-box";
     case "warning":
-      return "bg-amber-500  animate-[ping_2s_linear_infinite] opacity-30";
+      return "bg-amber-500  animate-box";
     case "normal":
     default:
-      return "bg-slate-100 opacity-0";
+      return "";
   }
 }
 export function getTextColor(status: ParameterStatus): string {
   switch (status) {
     case "danger":
-      return "text-red-500 animate-blink";
+      return "animate-textred";
     case "warning":
-      return "text-amber-500 animate-blink";
+      return "animate-textamber";
     case "normal":
     default:
       return "text-slate-100";

@@ -63,7 +63,7 @@ const FuelToggle1: React.FC = () => {
           className="absolute w-64 h-64"
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
-            left: "20%",
+            left: "15%",
             bottom: "90%",
           }}
         >

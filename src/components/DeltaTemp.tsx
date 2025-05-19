@@ -2,25 +2,23 @@ import React from "react";
 import { ParameterData } from "../types";
 import {
   getParameterStatus,
-  formatNumber1,
   getStatusColor,
+  formatNumber1,
   getTextColor,
   getBoxColor,
 } from "../utils/helpers";
 import StatusIndicator from "./StatusIndicator";
-import { PercentageBar } from "./PercentBar";
-import { param } from "framer-motion/client";
 
-interface TubeSkinProps {
+interface DeltaTempProps {
   parameter: ParameterData;
 }
 
-const TubeSkin: React.FC<TubeSkinProps> = ({ parameter }) => {
+const DeltaTemp: React.FC<DeltaTempProps> = ({ parameter }) => {
   const status = getParameterStatus(parameter);
 
   return (
     <div
-      className={`relative bg-slate-800 w-40 rounded-lg p-2 border bg-opacity-50 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden w-36`}
+      className={`relative bg-gray-950 bg-opacity-50 rounded-lg p-2 border border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
     >
       <span
         className={`absolute inset-0 m-auto opacity-10 ${getBoxColor(
@@ -36,30 +34,39 @@ const TubeSkin: React.FC<TubeSkinProps> = ({ parameter }) => {
             : ""
         }`}
       />
-      <div className="flex justify-between items-start mt-2 mb-0">
-        <div className="flex items-center mr-2">
-          <h3 className="font-medium text-slate-200">{parameter.id}</h3>
+
+      <div className="flex justify-between items-start mt-4 mb-0">
+        <div className="flex items-center gap-2">
+          <h3 className="font-medium text-xl text-slate-200">
+            {parameter.name}
+          </h3>
         </div>
         <StatusIndicator status={status} pulse={status !== "normal"} />
       </div>
 
       <div className="flex items-baseline gap-1 mt-0">
         <span
-          className={`text-3xl font-bold transition-all duration-300 ${getTextColor(
+          className={`text-3xl font-bold text-slate-100 transition-all duration-300 ${getTextColor(
             status
           )} `}
         >
-          {formatNumber1(parameter.value)}
+          +{formatNumber1(parameter.value)}
         </span>
         <span className="text-slate-400 text-sm">{parameter.unit}</span>
       </div>
-      <PercentageBar
-        low={parameter.lowThreshold}
-        real={parameter.value}
-        max={parameter.highThreshold}
-      />
+
+      <div className="mt-1 text-xs text-slate-400 flex justify-between">
+        <span>
+          Low: {parameter.lowThreshold}
+          {parameter.unit}
+        </span>
+        <span>
+          High: {parameter.highThreshold}
+          {parameter.unit}
+        </span>
+      </div>
     </div>
   );
 };
 
-export default TubeSkin;
+export default DeltaTemp;

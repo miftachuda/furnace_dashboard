@@ -5,6 +5,7 @@ import {
   getStatusColor,
   formatNumber3,
   getTextColor,
+  getBoxColor,
 } from "../utils/helpers";
 import StatusIndicator from "./StatusIndicator";
 
@@ -19,8 +20,13 @@ const ParameterCardNoChart: React.FC<ParameterCardNoChartProps> = ({
 
   return (
     <div
-      className={`relative bg-slate-800 rounded-lg p-4 border bg-opacity-45 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
+      className={`relative bg-gray-950 bg-opacity-40 rounded-lg p-4 border  border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
     >
+      <span
+        className={`absolute inset-0 m-auto opacity-10 ${getBoxColor(
+          status
+        )}  z-0`}
+      ></span>
       <div
         className={`absolute top-0 right-0 left-0 h-3 ${getStatusColor(
           status
@@ -40,7 +46,7 @@ const ParameterCardNoChart: React.FC<ParameterCardNoChartProps> = ({
 
       <div className="flex items-baseline gap-1 mt-3">
         <span
-          className={`text-3xl font-bold text-slate-100 transition-all duration-300 ${getTextColor(
+          className={`text-3xl font-bold  transition-all duration-300 ${getTextColor(
             status
           )} `}
         >

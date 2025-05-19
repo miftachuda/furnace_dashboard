@@ -22,12 +22,12 @@ const ParameterCard: React.FC<ParameterCardProps> = ({ parameter }) => {
   //<IconComponent className="w-5 h-5 text-slate-400" />
   return (
     <div
-      className={`relative   rounded-lg p-4 border bg-opacity-50 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
+      className={`relative   rounded-lg p-4 border bg-gray-950 bg-opacity-40 border-slate-700 transition-all duration-300 hover:shadow-lg hover:border-slate-600 overflow-hidden`}
     >
       <span
-        className={`absolute inset-0 m-auto ${getBoxColor(
+        className={`absolute inset-0 m-auto opacity-10 ${getBoxColor(
           status
-        )} rounded-full  z-0`}
+        )}  z-0`}
       ></span>
       <div
         className={`absolute top-0 right-0 left-0 h-3 ${getStatusColor(
@@ -41,14 +41,16 @@ const ParameterCard: React.FC<ParameterCardProps> = ({ parameter }) => {
 
       <div className="flex justify-between items-start mt-2 mb-2">
         <div className="flex items-center gap-2">
-          <h3 className="font-medium text-slate-200">{parameter.name}</h3>
+          <h3 className="font-medium text-2xl text-slate-200">
+            {parameter.name}
+          </h3>
         </div>
         <StatusIndicator status={status} pulse={status !== "normal"} />
       </div>
 
       <div className="flex items-baseline gap-1 mt-3">
         <span
-          className={`text-4xl font-bold  transition-all duration-300 ${getTextColor(
+          className={`text-5xl font-bold  transition-all duration-300 ${getTextColor(
             status
           )} `}
         >
