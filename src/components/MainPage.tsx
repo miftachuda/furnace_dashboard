@@ -603,7 +603,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.96) translate(-50%, -50%) ",
             left: "15%",
-            top: "74%",
+            top: "77%",
           }}
         >
           <img
@@ -830,7 +830,7 @@ const Dashboard: React.FC = () => {
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "4%",
+            left: "5%",
             top: "76%",
           }}
         >
@@ -852,7 +852,7 @@ const Dashboard: React.FC = () => {
           className="absolute w-56 "
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
-            left: "35%",
+            left: "36%",
             top: "76%",
           }}
         >
