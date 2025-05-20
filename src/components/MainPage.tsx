@@ -632,6 +632,7 @@ const Dashboard: React.FC = () => {
             transform: "scale(0.96) translate(-50%, -50%) ",
             left: "80%",
             top: "74%",
+            zIndex: -1,
           }}
         >
           <img
