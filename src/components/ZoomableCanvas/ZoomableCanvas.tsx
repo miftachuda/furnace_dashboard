@@ -12,14 +12,42 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
   backgroundImage,
   children,
 }) => {
+  let VIRTUAL_WIDTH = 2148;
+  let VIRTUAL_HEIGHT = 1018;
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  const checkFullscreenByViewport = (): void => {
+    const threshold = 5; // pixel tolerance
+    const isFs =
+      Math.abs(window.innerHeight - window.screen.height) < threshold &&
+      Math.abs(window.innerWidth - window.screen.width) < threshold;
+
+    setIsFullscreen(isFs);
+    if (isFs) {
+      VIRTUAL_WIDTH = 2148;
+      VIRTUAL_HEIGHT = 1118; // Prevent scrolling
+    }
+  };
+
+  useEffect(() => {
+    checkFullscreenByViewport(); // initial check
+
+    window.addEventListener("resize", checkFullscreenByViewport);
+    window.addEventListener("orientationchange", checkFullscreenByViewport); // optional for mobile
+
+    return () => {
+      window.removeEventListener("resize", checkFullscreenByViewport);
+      window.removeEventListener(
+        "orientationchange",
+        checkFullscreenByViewport
+      );
+    };
+  }, []);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const panStart = useRef({ x: 0, y: 0 });
 
-  const VIRTUAL_WIDTH = 2148;
-  const VIRTUAL_HEIGHT = 1018;
-  const [isFullscreen, setIsFullscreen] = useState(false);
   useEffect(() => {
     const updateScale = () => {
       const vw = window.innerWidth;
@@ -33,32 +61,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
     updateScale();
     return () => window.removeEventListener("resize", updateScale);
   }, []);
-  useEffect(() => {
-    const checkFullscreen = () => {
-      setIsFullscreen(
-        document.fullscreen ||
-          (document as any).webkitFullscreen ||
-          (document as any).mozFullScreen ||
-          (document as any).msFullscreen
-          ? true
-          : false
-      );
-    };
 
-    document.addEventListener("fullscreenchange", checkFullscreen);
-    document.addEventListener("webkitfullscreenchange", checkFullscreen);
-    document.addEventListener("mozfullscreenchange", checkFullscreen);
-    document.addEventListener("MSFullscreenChange", checkFullscreen);
-
-    checkFullscreen(); // check on mount
-
-    return () => {
-      document.removeEventListener("fullscreenchange", checkFullscreen);
-      document.removeEventListener("webkitfullscreenchange", checkFullscreen);
-      document.removeEventListener("mozfullscreenchange", checkFullscreen);
-      document.removeEventListener("MSFullscreenChange", checkFullscreen);
-    };
-  }, []);
   const {
     scale,
     setScale,
@@ -94,7 +97,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
       className="fixed inset-0 overflow-hidden bg-black"
       onWheel={handleWheelZoom}
       style={{
-        transform: `translate(0,${isFullscreen ? "12vh" : "3vh"})`,
+        transform: `translate(0,${isFullscreen ? "9vh" : "3vh"})`,
       }}
     >
       <div
@@ -104,7 +107,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
         onMouseLeave={handleMouseLeave}
         className={``}
         style={{
-          width: VIRTUAL_WIDTH,
+          width: 2800,
           height: VIRTUAL_HEIGHT,
 
           position: "absolute",
@@ -116,8 +119,8 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
           alt="Background"
           draggable={false}
           style={{
-            width: VIRTUAL_WIDTH,
-            height: VIRTUAL_HEIGHT,
+            width: VIRTUAL_WIDTH + 250,
+            height: VIRTUAL_HEIGHT + 100,
             transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`,
             transformOrigin: "top left",
             position: "absolute",

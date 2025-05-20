@@ -692,7 +692,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "32%",
-            top: "40%",
+            top: "37%",
           }}
         >
           <ParameterCard key="021 TSRF" parameter={tsrf021} />
