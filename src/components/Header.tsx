@@ -1,5 +1,4 @@
 import React from "react";
-import { Activity, Settings } from "lucide-react";
 
 const Header: React.FC = () => {
   return (
@@ -7,7 +6,7 @@ const Header: React.FC = () => {
       style={{
         transformOrigin: "top left",
         width: `100vw`,
-        height: `9vh`,
+        height: `10vmin`,
       }}
       className="bg-slate-900/100 backdrop-blur-sm border-b border-slate-800 py-[1vh] px-[2vh] flex justify-between items-center fixed top-0 left-0 right-0 z-50"
     >
@@ -15,9 +14,9 @@ const Header: React.FC = () => {
         <img
           src="/assets/icon.png"
           alt="furnace"
-          className="h-[7vh] ml-5 mr-5"
+          className="h-[7vmin] ml-5 mr-5"
         />
-        <h1 className="text-[6vh] font-bold text-slate-100">
+        <h1 className="text-[4vmin] font-bold text-slate-100">
           LOC II FURNACE DASHBOARD
         </h1>
       </div>

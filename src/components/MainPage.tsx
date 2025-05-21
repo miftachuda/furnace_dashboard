@@ -12,7 +12,6 @@ import { ParameterData } from "../types";
 import ParamCardMini from "./ParamCardMini";
 import FuelToggle1 from "./FuelToggle1";
 import FuelToggle2 from "./FuelToggle2";
-import TemperatureDisplay from "./Temperature";
 import BoxPanel from "./BurnerPanel";
 import FuelToggle1B from "./FuelToggle1B";
 import TubeSkinList from "./TubeSkinList";
@@ -681,7 +680,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.76) translate(-50%, -50%) ",
             left: "3%",
-            top: "10%",
+            top: "14%",
           }}
         >
           <ParameterCardNoChart key="021 Capacity" parameter={capacity} />
@@ -875,7 +874,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "22%",
-            top: "60%",
+            top: "58%",
           }}
         >
           <TubeSkinList
@@ -890,7 +889,7 @@ const Dashboard: React.FC = () => {
           style={{
             transform: "scale(0.60) translate(-50%, -50%) ",
             left: "51%",
-            top: "60%",
+            top: "58%",
           }}
         >
           <TubeSkinList

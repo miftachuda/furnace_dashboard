@@ -97,7 +97,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
       className="fixed inset-0 overflow-hidden bg-black"
       onWheel={handleWheelZoom}
       style={{
-        transform: `translate(0,${isFullscreen ? "9vh" : "3vh"})`,
+        transform: `translate(0,${isFullscreen ? "9vmin" : "4vmin"})`,
       }}
     >
       <div
@@ -147,7 +147,7 @@ export const ZoomableCanvas: React.FC<ZoomableCanvasProps> = ({
 
       {/* Zoom controls */}
       <div
-        className="absolute top-14 right-4 z-10"
+        className="absolute top-[5rem] right-4 z-10"
         style={{
           transform: "scale(0.60) translate(30%, -50%) ",
         }}
