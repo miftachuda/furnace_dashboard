@@ -22,10 +22,10 @@ import DeltaTemp from "./DeltaTemp";
 
 const Dashboard: React.FC = () => {
   const sg_fuel_gas = 0.7348;
-  const sg_fuel_oil = 0.9071;
+  const sg_fuel_oil = 0.9184;
   const mass_air_per_kg = 1.225;
-  const tsrf_fuel_gas_fact = 1.0720;
-  const tsrf_fuel_oil_fact = 0.9682;
+  const tsrf_fuel_gas_fact = 1.125;
+  const tsrf_fuel_oil_fact = 0.9671;
   const [datas, setDatas] = useState<TagData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -63,6 +63,7 @@ const Dashboard: React.FC = () => {
     "025FIC_004.pv", //flow hot oil
     "025FI_014.PV", //flow fg 025
     "002FI_035.PV", // flow oil 025
+    "002FI_036.PV",
     "025AI_001.pv", //02 selatan
     "025AI_002.pv", //02 utara
 
@@ -199,6 +200,7 @@ const Dashboard: React.FC = () => {
   const fy_058x = getValuesByTag("021FY_058X.C1", datas);
   const fi_014 = getValuesByTag("025FI_014.PV", datas);
   const fi_035 = getValuesByTag("002FI_035.PV", datas);
+  const fi_036 = getValuesByTag("002FI_036.PV", datas);
 
   const tsrf_025_list = fic_004.map((_, i) => {
     const ton_capacity_025 = fic_004[i] * 24 * fy_058x[i];
