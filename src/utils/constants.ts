@@ -21,7 +21,7 @@ export const initialParameterData: Record<string, ParameterData> = {
   tempInlet: {
     id: 'tempInlet',
     name: 'Temperature Inlet',
-    value: 450,
+    value: 500,
     unit: '°C',
     lowThreshold: 400,
     highThreshold: 550,

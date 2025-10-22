@@ -24,7 +24,7 @@ const Dashboard: React.FC = () => {
   const sg_fuel_gas = 0.7348;
   const sg_fuel_oil = 0.9184;
   const mass_air_per_kg = 1.225;
-  const tsrf_fuel_gas_fact = 1.125;
+  const tsrf_fuel_gas_fact = 1.025;
   const tsrf_fuel_oil_fact = 0.9671;
   const [datas, setDatas] = useState<TagData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -474,7 +474,7 @@ const Dashboard: React.FC = () => {
           value: value,
           unit: "℃",
           lowThreshold: 350,
-          highThreshold: 450,
+          highThreshold: 500,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
@@ -506,7 +506,7 @@ const Dashboard: React.FC = () => {
           value: value,
           unit: "℃",
           lowThreshold: 350,
-          highThreshold: 450,
+          highThreshold: 500,
           history: [],
           icon: "calculator", // could be a filename or icon name
           description: "Tube Skin Pass " + pass,
